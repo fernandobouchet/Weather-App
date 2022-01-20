@@ -12,7 +12,7 @@ searchButton.addEventListener("click", () => {
 async function getWeather(city) {
   try {
     const getApi = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=cad0610116d54da5c37d79b27bdee371`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=cad0610116d54da5c37d79b27bdee371`,
       { mode: "cors" }
     );
     const weatherData = await getApi.json();
@@ -40,7 +40,7 @@ function createWeatherCard(city) {
   description.textContent = capitalizeFirstLetter(
     `"${city.weather[0].description}"`
   );
-  icon.src = `http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`;
+  icon.src = `https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`;
   weatherContainer.appendChild(cityName);
   weatherContainer.appendChild(icon);
   weatherContainer.appendChild(description);
