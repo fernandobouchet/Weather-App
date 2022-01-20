@@ -28,6 +28,10 @@ form {
   align-items: center;
 }
 
+#temperature-selection {
+  margin-top: 1rem;
+}
+
 button {
   background-color: #495057;
   color: inherit;

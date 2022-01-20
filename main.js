@@ -3,26 +3,32 @@ const cityInput = document.getElementById("city-input");
 const weatherDiv = document.getElementById("weather-display");
 
 searchButton.addEventListener("click", () => {
-  removeWeatherCard();
-  getWeather(cityInput.value)
-    .then((result) => createWeatherCard(result))
-    .catch((error) => alert(error));
+  if (cityInput.value === "") {
+    alert("Missing city name!");
+  } else {
+    const tempSelection = document.querySelector(".checkbox:checked");
+    removeWeatherCard();
+    getWeather(cityInput.value, tempSelection.value)
+      .then((result) => createWeatherCard(result, tempSelection.value))
+      .catch((error) => alert("Couldn't fetch the API!", error));
+  }
 });
 
-async function getWeather(city) {
+async function getWeather(city, temperature) {
   try {
     const getApi = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=cad0610116d54da5c37d79b27bdee371`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${temperature}&appid=cad0610116d54da5c37d79b27bdee371`,
       { mode: "cors" }
     );
     const weatherData = await getApi.json();
     return weatherData;
   } catch (error) {
-    alert(error);
+    alert("Couldn't fetch the API", error);
   }
 }
 
-function createWeatherCard(city) {
+function createWeatherCard(city, temp) {
+  const temperatureType = checkTemp(temp);
   const weatherContainer = document.createElement("div");
   weatherContainer.id = "weather-container";
   const cityName = document.createElement("h2");
@@ -33,9 +39,9 @@ function createWeatherCard(city) {
   const description = document.createElement("h3");
   const icon = document.createElement("img");
   cityName.textContent = city.name;
-  temperature.textContent = `Temperature: ${city.main.temp}°C`;
-  minTemperature.textContent = `Min: ${city.main.temp_min}°C`;
-  maxTemperature.textContent = `Max: ${city.main.temp_max}°C`;
+  temperature.textContent = `Temperature: ${city.main.temp}°${temperatureType}`;
+  minTemperature.textContent = `Min: ${city.main.temp_min}°${temperatureType}`;
+  maxTemperature.textContent = `Max: ${city.main.temp_max}°${temperatureType}`;
   humidity.textContent = `Humidity: ${city.main.humidity}%`;
   description.textContent = capitalizeFirstLetter(
     `"${city.weather[0].description}"`
@@ -62,6 +68,13 @@ function capitalizeFirstLetter(string) {
   let firstLetter = string.charAt(1);
   let firstLetterUpper = firstLetter.toUpperCase();
   let stringWhitoutFirstLetter = string.slice(2);
-  console.log(firstLetterUpper);
   return `"${firstLetterUpper}${stringWhitoutFirstLetter}`;
+}
+
+function checkTemp(temp) {
+  if (temp === "imperial") {
+    return "F";
+  } else {
+    return "C";
+  }
 }

@@ -16,9 +16,10 @@
         <h1>Today's weather</h1>
     </header>
     <form>
-        <input id="city-input" type="text" placeholder="Insert city name">
+        <input id="city-input" type="text" placeholder="Insert city name" required>
         <button id="search-button" type="button">SEARCH</button>
-        <div> <label for="temperature">Temperature:</label>
+        <div id="temperature-selection">
+            <label for="temperature" id="temperature-label">Temperature:</label>
             <input class="checkbox" type="radio" name="temp" id="temp-celsius" value="metric" checked>Celsius
             <input class="checkbox" type="radio" name="temp" id="temp-fahrenheit" value="imperial">Fahrenheit
         </div>
