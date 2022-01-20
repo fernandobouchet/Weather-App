@@ -16,7 +16,7 @@ async function getWeather(city) {
       { mode: "cors" }
     );
     const weatherData = await getApi.json();
-    return await weatherData;
+    return weatherData;
   } catch (error) {
     alert(error);
   }
