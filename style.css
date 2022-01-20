@@ -15,7 +15,7 @@ form {
 }
 
 #weather-display {
-  padding: 3rem;
+  padding: 2rem;
 }
 
 #weather-container {
@@ -58,6 +58,10 @@ h3 {
 
 img {
   width: 8rem;
+}
+
+header {
+  border-bottom-style: solid;
 }
 
 .spin {

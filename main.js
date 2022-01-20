@@ -34,15 +34,13 @@ function createWeatherCard(city, temp) {
   weatherContainer.id = "weather-container";
   const cityName = document.createElement("h2");
   const temperature = document.createElement("h3");
-  const minTemperature = document.createElement("h3");
-  const maxTemperature = document.createElement("h3");
+  const minMaxTemperature = document.createElement("h3");
   const humidity = document.createElement("h3");
   const description = document.createElement("h3");
   const icon = document.createElement("img");
   cityName.textContent = city.name;
   temperature.textContent = `Temperature: ${city.main.temp}°${temperatureType}`;
-  minTemperature.textContent = `Min: ${city.main.temp_min}°${temperatureType}`;
-  maxTemperature.textContent = `Max: ${city.main.temp_max}°${temperatureType}`;
+  minMaxTemperature.textContent = `Min: ${city.main.temp_min}°${temperatureType} / Max: ${city.main.temp_max}°${temperatureType}`;
   humidity.textContent = `Humidity: ${city.main.humidity}%`;
   description.textContent = capitalizeFirstLetter(
     `"${city.weather[0].description}"`
@@ -52,8 +50,7 @@ function createWeatherCard(city, temp) {
   weatherContainer.appendChild(icon);
   weatherContainer.appendChild(description);
   weatherContainer.appendChild(temperature);
-  weatherContainer.appendChild(minTemperature);
-  weatherContainer.appendChild(maxTemperature);
+  weatherContainer.appendChild(minMaxTemperature);
   weatherContainer.appendChild(humidity);
   refreshSpinner();
   weatherDiv.appendChild(weatherContainer);
