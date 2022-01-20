@@ -15,7 +15,7 @@ form {
 }
 
 #weather-display {
-  padding: 5rem;
+  padding: 3rem;
 }
 
 #weather-container {
@@ -58,4 +58,23 @@ h3 {
 
 img {
   width: 8rem;
+}
+
+.spin {
+  margin-top: 10rem;
+  width: 20px;
+  height: 20px;
+  border: 14px solid #adb5bd;
+  border-top: 14px solid #495057;
+  border-radius: 50%;
+  animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

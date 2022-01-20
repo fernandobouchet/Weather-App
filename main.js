@@ -6,6 +6,7 @@ searchButton.addEventListener("click", () => {
   if (cityInput.value === "") {
     alert("Missing city name!");
   } else {
+    refreshSpinner();
     const tempSelection = document.querySelector(".checkbox:checked");
     removeWeatherCard();
     getWeather(cityInput.value, tempSelection.value)
@@ -54,6 +55,7 @@ function createWeatherCard(city, temp) {
   weatherContainer.appendChild(minTemperature);
   weatherContainer.appendChild(maxTemperature);
   weatherContainer.appendChild(humidity);
+  refreshSpinner();
   weatherDiv.appendChild(weatherContainer);
 }
 
@@ -77,4 +79,10 @@ function checkTemp(temp) {
   } else {
     return "C";
   }
+}
+
+function refreshSpinner() {
+  weatherDiv.classList.contains("spin")
+    ? weatherDiv.classList.remove("spin")
+    : weatherDiv.classList.add("spin");
 }
