@@ -13,6 +13,7 @@ body {
 form {
   padding-top: 2rem;
 }
+
 #weather-display {
   padding: 5rem;
 }
@@ -24,6 +25,7 @@ form {
   border-radius: 15px;
   padding: 1rem;
   background-color: #343a40;
+  align-items: center;
 }
 
 button {
@@ -40,4 +42,16 @@ input {
 
 button:hover {
   background-color: #6c757d;
+}
+
+.checkbox {
+  vertical-align: middle;
+}
+
+h3 {
+  margin: 0.4rem;
+}
+
+img {
+  width: 8rem;
 }
