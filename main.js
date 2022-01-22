@@ -24,6 +24,7 @@ async function getWeather(city, temperature) {
     const weatherData = await getApi.json();
     return weatherData;
   } catch (error) {
+    refreshSpinner();
     alert("Couldn't fetch the API", error);
   }
 }
